@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SubscriptionLibrarySystem.Models.Book">
+    <Position X="7.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAEAEgAIAAAAAABAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Models\Book.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubscriptionLibrarySystem.Models.Library">
+    <Position X="9.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAgAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Models\Library.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubscriptionLibrarySystem.Models.Reader">
+    <Position X="11.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAEAAAAAAAAAEAAAAAAAAAAAAAAACAAAAIAAACAg=</HashCode>
+      <FileName>Models\Reader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubscriptionLibrarySystem.Models.ResponseDTO">
+    <Position X="7.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAABAAAAAAAAAAAAAAAAAABAAAEAAAAA=</HashCode>
+      <FileName>Models\ResponseDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubscriptionLibrarySystem.Models.Subscription">
+    <Position X="9.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAACCAAABAAAAAAEAAAAAAAAAAACAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Models\Subscription.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubscriptionLibrarySystem.Services.LibraryService" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>CAAABEAAAAIaAAAACAAAAAAQCAAAQAAAJEDAAAQkgCA=</HashCode>
+      <FileName>Services\LibraryService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SubscriptionLibrarySystem.Services.WriteService" BaseTypeListCollapsed="true">
+    <Position X="3" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAQAAAAABAAAAAAAAAAAACAACAAAAAgAAAAAAA=</HashCode>
+      <FileName>Services\WriteService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="SubscriptionLibrarySystem.Services.Abstract.ILibraryService">
+    <Position X="3.25" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>CAAABEAAAAIaAAAACAAAAAAACAAAQAAAJEDAAAQkgCA=</HashCode>
+      <FileName>Services\Abstract\ILibraryService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SubscriptionLibrarySystem.Services.Abstract.IWriteService">
+    <Position X="5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAQAAAAABAAAAAAAAAAAACAACAAAAAgAAAAAAA=</HashCode>
+      <FileName>Services\Abstract\IWriteService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="SubscriptionLibrarySystem.Models.Category">
+    <Position X="7.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Models\Reader.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
