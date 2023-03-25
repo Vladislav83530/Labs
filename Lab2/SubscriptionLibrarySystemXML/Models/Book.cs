@@ -1,14 +1,21 @@
 ﻿using System.Text;
+using System.Xml.Serialization;
 
 namespace SubscriptionLibrarySystemXML.Models
 {
-    internal class Book
+    public class Book
     {
+        [XmlAttribute("id")]
         public int Id { get; set; }
+        [XmlAttribute("title")]
         public string Title { get; set; }
+        [XmlAttribute("author")]
         public string Author { get; set; }
+        [XmlAttribute("genre")]
         public string Genre { get; set; }
+        [XmlAttribute("collateralprice")]
         public decimal CollateralPrice { get; set; }
+        [XmlAttribute("dailyrentalprice")]
         public decimal DailyRentalPrice { get; set; }
 
         public override string ToString()

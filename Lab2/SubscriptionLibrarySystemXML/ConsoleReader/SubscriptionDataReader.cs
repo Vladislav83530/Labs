@@ -18,11 +18,11 @@ namespace SubscriptionLibrarySystemXML.ConsoleReader
         public object ReadData()
         {
             Subscription subscription = new(library);
-            Console.WriteLine("Id: ");
+            Console.Write("Id: ");
             subscription.Id = int.Parse(Console.ReadLine()!);
             while (true)
             {
-                Console.WriteLine("Reader Id: ");
+                Console.Write("Reader Id: ");
                 var value = Console.ReadLine()!;
                 if (value.ToLower() == "exit")
                     goto exit;
@@ -40,7 +40,7 @@ namespace SubscriptionLibrarySystemXML.ConsoleReader
             }
             while (true)
             {
-                Console.WriteLine("Book Id: ");
+                Console.Write("Book Id: ");
                 var value = Console.ReadLine()!;
                 if (value.ToLower() == "exit")
                     goto exit;
@@ -56,13 +56,46 @@ namespace SubscriptionLibrarySystemXML.ConsoleReader
                         Console.WriteLine($"Book with {bookId} not found. Try again\nIf you want to come back enter 'exit'");
                 }
             }
-            Console.WriteLine("Issued date: ");
-            subscription.IssuedDate = DateTime.Parse(Console.ReadLine()!);
-            Console.WriteLine("Expected return date: ");
-            subscription.ExpectedReturnDate = DateTime.Parse(Console.ReadLine()!);
-            Console.WriteLine("Return date: ");
-            var inputReturnDate = Console.ReadLine();
-            subscription.ReturnDate = string.IsNullOrEmpty(inputReturnDate) ? null : DateTime.Parse(inputReturnDate);
+            while (true)
+            {
+                try
+                {
+                    Console.Write("Issued date: ");
+                    subscription.IssuedDate = DateTime.Parse(Console.ReadLine()!);
+                    break;
+                }
+                catch(ArgumentException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            while (true)
+            {
+                try
+                {
+                    Console.Write("Expected return date: ");
+                    subscription.ExpectedReturnDate = DateTime.Parse(Console.ReadLine()!);
+                    break;
+                }
+                catch (ArgumentException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            while (true)
+            {
+                try
+                {
+                    Console.Write("Return date: ");
+                    var inputReturnDate = Console.ReadLine();
+                    subscription.ReturnDate = string.IsNullOrEmpty(inputReturnDate) ? null : DateTime.Parse(inputReturnDate);
+                    break;
+                }
+                catch (ArgumentException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
             if (subscription != null)
                 return subscription;
 

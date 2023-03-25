@@ -21,7 +21,7 @@ namespace SubscriptionLibrarySystemXML
                 Console.WriteLine("Make a choice:");
                 Console.WriteLine("(1) - Write entity to XML used Console");
                 Console.WriteLine("(2) - Upload XML file used XMLDocument");
-                //Console.WriteLine("(3) - ");
+                Console.WriteLine("(3) - Upload XML file user XMLSerializer");
                 Console.WriteLine("Enter 'exit' if you want to end");
 
                 string choose = Console.ReadLine()!;
@@ -33,7 +33,23 @@ namespace SubscriptionLibrarySystemXML
                         SaveData();
                         break;
                     case "2":
-                        SaveData();
+                        Console.Write("Enter file name: ");
+                        string fileName = Console.ReadLine();
+                        var library = fileProcessor.ReadFile(fileName);
+                        Console.WriteLine(library.ToString());
+                        break;
+                    case "3":
+                        Console.Write("Enter file name: ");
+                        string fileName_ = Console.ReadLine();
+                        try
+                        {
+                            var library_ = fileProcessor.DeserializeFile(fileName_);
+                            Console.WriteLine(library_.ToString());
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Wrong file. PLease, try again");
+                        }
                         break;
                     case "exit":
                         Console.Clear();

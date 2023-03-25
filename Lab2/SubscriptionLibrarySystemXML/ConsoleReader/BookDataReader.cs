@@ -12,17 +12,17 @@ namespace SubscriptionLibrarySystemXML.ConsoleReader
         public object ReadData()
         {
             Book book = new();
-            Console.WriteLine("Id: ");
+            Console.Write("Id: ");
             book.Id = int.Parse(Console.ReadLine()!);
-            Console.WriteLine("Title: ");
+            Console.Write("Title: ");
             book.Title = Console.ReadLine()!;
-            Console.WriteLine("Author: ");
+            Console.Write("Author: ");
             book.Author = Console.ReadLine()!;
-            Console.WriteLine("Genre: ");
+            Console.Write("Genre: ");
             book.Genre = Console.ReadLine()!;
-            Console.WriteLine("Collateral price: ");
+            Console.Write("Collateral price: ");
             book.CollateralPrice = decimal.Parse(Console.ReadLine()!);
-            Console.WriteLine("Daily rental price: ");
+            Console.Write("Daily rental price: ");
             book.DailyRentalPrice = decimal.Parse(Console.ReadLine()!);
 
             return book;

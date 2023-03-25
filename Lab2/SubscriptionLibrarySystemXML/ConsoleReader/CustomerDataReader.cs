@@ -12,19 +12,19 @@ namespace SubscriptionLibrarySystemXML.ConsoleReader
         public object ReadData()
         {
             Reader reader = new();
-            Console.WriteLine("Id: ");
+            Console.Write("Id: ");
             reader.Id = int.Parse(Console.ReadLine()!);
-            Console.WriteLine("First name: ");
+            Console.Write("First name: ");
             reader.FirstName = Console.ReadLine()!;
-            Console.WriteLine("Last name: ");
+            Console.Write("Last name: ");
             reader.LastName = Console.ReadLine()!;
-            Console.WriteLine("Address: ");
+            Console.Write("Address: ");
             reader.Address = Console.ReadLine()!;
-            Console.WriteLine("Phone: ");
+            Console.Write("Phone: ");
             reader.Phone = Console.ReadLine()!;
             while (true)
             {
-                Console.WriteLine("Category (1-Child; 2-Adult): ");
+                Console.Write("Category (1-Child; 2-Adult): ");
                 var category = int.Parse(Console.ReadLine()!);
                 if (category == 1)
                 {
