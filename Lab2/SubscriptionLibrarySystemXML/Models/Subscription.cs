@@ -78,6 +78,19 @@ namespace SubscriptionLibrarySystemXML.Models
             }
         }
 
+        [XmlAttribute("returndate")]
+        public string? ReturnedDateString
+        {
+            get { return ReturnDate?.ToString("M/d/yyyy h:mm:ss tt"); }
+            set
+            { 
+                if (!string.IsNullOrEmpty(value)) 
+                    ReturnDate = DateTime.ParseExact(value, "M/d/yyyy h:mm:ss tt", CultureInfo.InvariantCulture); 
+                else
+                    ReturnDate = null; 
+            }
+        }
+
         private decimal rentalFee;
         [XmlAttribute("rentalfee")]
         public decimal RentalFee
@@ -110,7 +123,7 @@ namespace SubscriptionLibrarySystemXML.Models
             output.AppendLine($"Reader: {ReaderId}");
             output.AppendLine($"Issued Date: {IssuedDate}");
             output.AppendLine($"Expected Return Date: {ExpectedReturnDate}");
-            output.AppendLine($"Return Date: {ReturnDate}");
+            output.AppendLine($"Returned Date: {ReturnDate}");
             output.AppendLine($"Price: {RentalFee}");
             return output.ToString();
         }

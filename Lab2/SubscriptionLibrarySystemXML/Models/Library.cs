@@ -19,14 +19,20 @@ namespace SubscriptionLibrarySystemXML.Models
         public override string ToString()
         {
             StringBuilder output = new();
+            output.AppendLine("READERS: ");
             foreach (var reader in Readers)
                 output.AppendLine(reader.ToString());
+            output.AppendLine(new string('-', 50));
 
+            output.AppendLine("BOOKS: ");
             foreach (var book in Books)
                 output.AppendLine(book.ToString());
+            output.AppendLine(new string('-', 50));
 
+            output.AppendLine("SUBSCRIPTIONS: ");
             foreach (var subscription in Subscriptions)
                 output.AppendLine(subscription.ToString());
+            output.AppendLine(new string('-', 50));
 
             return output.ToString();
         }
