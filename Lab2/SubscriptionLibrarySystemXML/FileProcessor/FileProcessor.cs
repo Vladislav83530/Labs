@@ -60,7 +60,7 @@ namespace SubscriptionLibrarySystemXML.FileProcessor
         {
             Library library = new Library();
             XmlDocument doc = new XmlDocument();
-            if (File.Exists(fileName))
+            if (File.Exists(fileName) && ValidateXml(fileName, "schema"))
             {
                 doc.Load(fileName);
 
@@ -90,7 +90,7 @@ namespace SubscriptionLibrarySystemXML.FileProcessor
 
                 return library;
             }
-            return null;
+            throw new Exception("Wrong format of file");
         }
 
         /// <summary>
@@ -99,12 +99,37 @@ namespace SubscriptionLibrarySystemXML.FileProcessor
         /// <param name="fileName"></param>
         /// <returns></returns>
         public Library DeserializeFile(string fileName)
-        {
+        {         
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(Library));
             using (FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate))
             {
                 Library? library = (Library)xmlSerializer.Deserialize(fs);
                 return library;
+            }
+        }
+
+        /// <summary>
+        /// Validate XML
+        /// </summary>
+        /// <param name="xmlFilePath"></param>
+        /// <param name="xsdFilePath"></param>
+        /// <returns>IsValid? True/False</returns>
+        private bool ValidateXml(string xmlFilePath, string xsdFilePath)
+        {
+            try
+            {
+                XmlReaderSettings settings = new XmlReaderSettings();
+                settings.Schemas.Add(null, xsdFilePath);
+                settings.ValidationType = ValidationType.Schema;
+                using (XmlReader reader = XmlReader.Create(xmlFilePath, settings))
+                {
+                    while (reader.Read()) { }
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
     }

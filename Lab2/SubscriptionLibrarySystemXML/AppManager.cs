@@ -58,8 +58,15 @@ namespace SubscriptionLibrarySystemXML
                         string fileName = Console.ReadLine();
                         if (File.Exists(fileName))
                         {
-                            var library = fileProcessor.ReadFile(fileName);
-                            Console.WriteLine(library.ToString());
+                            try
+                            {
+                                var library = fileProcessor.ReadFile(fileName);
+                                Console.WriteLine(library.ToString());
+                            }
+                            catch(Exception ex)
+                            {
+                                Console.WriteLine(ex.Message);
+                            }
                         }
                         else
                             Console.WriteLine("File is not exists");
