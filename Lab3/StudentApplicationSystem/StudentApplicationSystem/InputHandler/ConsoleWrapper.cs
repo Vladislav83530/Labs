@@ -18,5 +18,12 @@ namespace StudentApplicationSystem.InputHandler
         {
             return Console.ReadLine();
         }
+
+        public void WriteLineException(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(message);
+            Console.ResetColor();
+        }
     }
 }

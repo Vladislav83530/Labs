@@ -9,11 +9,13 @@ namespace StudentApplicationSystem
     {
         private readonly IInputHandler _inputHandler;
         private readonly IApplicantValidateService _applicantValidateService;
+        private readonly IConsoleWrapper _consoleWrapper;
 
-        public InputManager(IInputHandler inputHandler, IApplicantValidateService applicantValidateService)
+        public InputManager(IInputHandler inputHandler, IApplicantValidateService applicantValidateService, IConsoleWrapper consoleWrapper)
         {
             _inputHandler = inputHandler;
             _applicantValidateService = applicantValidateService;
+            _consoleWrapper = consoleWrapper;
         }
 
         /// <summary>
@@ -41,7 +43,7 @@ namespace StudentApplicationSystem
         /// <param name="prompt">The prompt to display to the user.</param>
         /// <param name="inputHandler">A function to convert the entered string to a value of type T.</param>
         /// <param name="setter">A function to set the value in the ApplicantBuilder object.</param>
-        public void ReadField<T>(string prompt, Func<string, T> inputHandler, Func<T, ApplicantBuilder> setter)
+        private void ReadField<T>(string prompt, Func<string, T> inputHandler, Func<T, ApplicantBuilder> setter)
         {
             while (true)
             {
@@ -53,9 +55,7 @@ namespace StudentApplicationSystem
                 }
                 catch (Exception ex)
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine(ex.Message);
-                    Console.ResetColor();
+                    _consoleWrapper.WriteLineException(ex.Message);
                     continue;
                 }
             }

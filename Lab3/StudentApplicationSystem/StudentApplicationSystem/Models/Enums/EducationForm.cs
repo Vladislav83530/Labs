@@ -3,7 +3,7 @@
     /// <summary>
     /// The EducationForm enum represents the form of education
     /// </summary>
-    internal enum EducationForm
+    public enum EducationForm
     {
         Budget,
         Contract

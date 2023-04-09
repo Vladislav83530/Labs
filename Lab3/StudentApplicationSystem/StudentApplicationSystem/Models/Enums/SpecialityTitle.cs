@@ -3,7 +3,7 @@
     /// <summary>
     /// The Speciality enum represents the different specialities offered by the university
     /// </summary>
-    internal enum SpecialityTitle
+    public enum SpecialityTitle
     {
         ComputerScience,
         SoftwareEngineering,

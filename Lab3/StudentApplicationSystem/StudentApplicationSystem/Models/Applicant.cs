@@ -5,7 +5,8 @@ namespace StudentApplicationSystem.Models
     /// <summary>
     /// The Applicant class represents a person applying to a university.
     /// </summary>
-    internal class Applicant
+    [Serializable]
+    public class Applicant
     {
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
@@ -16,6 +17,7 @@ namespace StudentApplicationSystem.Models
         public EducationLevel EducationLevel { get; set; }
         public EducationForm EducationForm { get; set; }
 
+        public Applicant() { }
         public Applicant(string firstName, string lastName, string middleName, DateTime birthDate,
             List<TestResult> testResults, List<Speciality> specialties, EducationLevel educationLevel, EducationForm educationForm)
         {
@@ -27,6 +29,18 @@ namespace StudentApplicationSystem.Models
             Specialities = specialties;
             EducationLevel = educationLevel;
             EducationForm = educationForm;
+        }
+
+        public override string ToString()
+        {
+            var testResults = string.Join("\n\t ", TestResults);
+            var specialities = string.Join("\n ", Specialities);
+            return $"Name: {FirstName} {MiddleName} {LastName}\n" +
+                   $"Birth Date: {BirthDate.ToShortDateString()}\n" +
+                   $"Education Level: {EducationLevel}\n" +
+                   $"Education Form: {EducationForm}\n" +
+                   $"Test Results: \n\t[{testResults}]\n" +
+                   $"Specialities: [{specialities}]";
         }
     }
 }

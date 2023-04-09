@@ -3,7 +3,7 @@
     /// <summary>
     /// The Subject enum represents the different subjects that are tested for in the admissions process
     /// </summary>
-    internal enum Subject
+    public enum Subject
     {
         UkrainianLanguageAndLiterature,
         Mathematics,

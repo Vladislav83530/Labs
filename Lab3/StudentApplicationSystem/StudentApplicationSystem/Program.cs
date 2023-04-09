@@ -14,7 +14,8 @@ var serviceProvider = new ServiceCollection()
 
 var applicantValidateService = serviceProvider.GetRequiredService<IApplicantValidateService>();
 var inputHandler = serviceProvider.GetRequiredService<IInputHandler>();
+var consoleWrapper = serviceProvider.GetRequiredService<IConsoleWrapper>();
 
-InputManager inputManager = new InputManager(inputHandler, applicantValidateService);
+InputManager inputManager = new InputManager(inputHandler, applicantValidateService, consoleWrapper);
 AppManager appManager = new AppManager(inputManager);
 appManager.Run();

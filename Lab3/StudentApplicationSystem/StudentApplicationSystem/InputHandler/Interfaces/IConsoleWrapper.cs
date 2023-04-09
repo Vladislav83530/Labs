@@ -5,5 +5,6 @@
         void Write(string message);
         void WriteLine(string message);
         string ReadLine();
+        void WriteLineException(string message);
     }
 }
