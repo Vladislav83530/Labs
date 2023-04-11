@@ -1,9 +1,7 @@
-﻿using StudentApplicationSystem.Models;
-
-namespace StudentApplicationSystem.ApplicantFactory.Interfaces
+﻿namespace StudentApplicationSystem.ApplicantFactory.Interfaces
 {
     internal interface IApplicantFileLoader
     {
-        List<Applicant> Load(string fileName);
+        List<T> Load<T>(string fileName);
     }
 }

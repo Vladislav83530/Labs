@@ -1,17 +1,16 @@
 ﻿using StudentApplicationSystem.ApplicantFactory.Interfaces;
-using StudentApplicationSystem.Models;
 using System.Xml.Serialization;
 
 namespace StudentApplicationSystem.ApplicantFactory.Xml
 {
     internal class ApplicantXmlLoader : IApplicantFileLoader
     {
-        public List<Applicant> Load(string fileName)
+        public List<T> Load<T>(string fileName)
         {
-            var serializer = new XmlSerializer(typeof(List<Applicant>));
+            var serializer = new XmlSerializer(typeof(List<T>));
             using (var reader = new StreamReader(fileName))
             {
-                return (List<Applicant>)serializer.Deserialize(reader);
+                return (List<T>)serializer.Deserialize(reader);
             }
         }
     }

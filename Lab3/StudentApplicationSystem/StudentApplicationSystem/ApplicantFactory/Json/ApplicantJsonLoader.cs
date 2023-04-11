@@ -1,15 +1,14 @@
 ﻿using Newtonsoft.Json;
 using StudentApplicationSystem.ApplicantFactory.Interfaces;
-using StudentApplicationSystem.Models;
 
 namespace StudentApplicationSystem.ApplicantFactory.Json
 {
     internal class ApplicantJsonLoader : IApplicantFileLoader
     {
-        public List<Applicant> Load(string fileName)
+        public List<T> Load<T>(string fileName)
         {
             var jsonData = File.ReadAllText(fileName);
-            return JsonConvert.DeserializeObject<List<Applicant>>(jsonData);
+            return JsonConvert.DeserializeObject<List<T>>(jsonData);
         }
     }
 }

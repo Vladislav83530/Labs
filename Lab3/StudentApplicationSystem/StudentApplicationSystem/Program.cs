@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using StudentApplicationSystem;
+using StudentApplicationSystem.ApplicantFactory.Interfaces;
+using StudentApplicationSystem.ApplicantFactory.Json;
 using StudentApplicationSystem.DataValidator;
 using StudentApplicationSystem.DataValidator.Interfaces;
 using StudentApplicationSystem.InputHandler;
@@ -16,6 +18,7 @@ var applicantValidateService = serviceProvider.GetRequiredService<IApplicantVali
 var inputHandler = serviceProvider.GetRequiredService<IInputHandler>();
 var consoleWrapper = serviceProvider.GetRequiredService<IConsoleWrapper>();
 
+IApplicantFileFactory fileFactory = new ApplicantJsonFactory();
 InputManager inputManager = new InputManager(inputHandler, applicantValidateService, consoleWrapper);
-AppManager appManager = new AppManager(inputManager);
+AppManager appManager = new AppManager(inputManager, fileFactory);
 appManager.Run();
