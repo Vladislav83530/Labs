@@ -8,11 +8,13 @@ namespace StudentApplicationSystem
     internal class AppManager
     {
         private readonly InputManager _inputManager;
+        private IApplicantFileFactory _factory;
         private string schema;
 
-        public AppManager( InputManager inputManager)
+        public AppManager(InputManager inputManager, IApplicantFileFactory applicantFileFactory)
         {
             _inputManager = inputManager;
+            _factory = applicantFileFactory;
         }
 
         public void Run()
@@ -102,18 +104,17 @@ namespace StudentApplicationSystem
                 }
                 else
                 {
-                    IApplicantFileFactory factory;
                     if (fileFormat.ToLower() == ".json")
-                        factory = new ApplicantJsonFactory();
+                        _factory = new ApplicantJsonFactory();
                     else if (fileFormat.ToLower() == ".xml")
-                       factory = new ApplicantXmlFactory();
+                        _factory = new ApplicantXmlFactory();
                     else
                     {
                         Console.WriteLine("Invalid format. Try again.");
                         continue;
                     }
 
-                    var saver = factory.CreateFileSaver();
+                    var saver = _factory.CreateFileSaver();
                     saver.Save(applicants, fileName);
                     break;
                 }
@@ -133,15 +134,14 @@ namespace StudentApplicationSystem
                     continue;
                 }
 
-                IApplicantFileFactory factory;
                 if (fileFormat.ToLower() == ".json")
                 {
-                    factory = new ApplicantJsonFactory();
+                    _factory = new ApplicantJsonFactory();
                     schema = "JsonShema.json";
                 }
                 else if (fileFormat.ToLower() == ".xml")
                 {
-                    factory = new ApplicantXmlFactory();
+                    _factory = new ApplicantXmlFactory();
                     schema = "XmlSchema";
                 }
                 else
@@ -150,16 +150,16 @@ namespace StudentApplicationSystem
                     continue;
                 }
 
-                bool isValidFile = factory.CreateFileValidator().IsValid(fileName, schema);
+                bool isValidFile = _factory.CreateFileValidator().IsValid(fileName, schema);
                 if (!isValidFile)
                 {
                     Console.WriteLine("File is not valid");
                     continue;
                 }
 
-                var loader = factory.CreateFileLoader();
-                var applicants = loader.Load(fileName);
-                foreach ( var applicant in applicants) 
+                var loader = _factory.CreateFileLoader();
+                var applicants = loader.Load<Applicant>(fileName);
+                foreach (var applicant in applicants)
                 {
                     Console.WriteLine(applicant.ToString());
                     Console.WriteLine(new string('-', 50));

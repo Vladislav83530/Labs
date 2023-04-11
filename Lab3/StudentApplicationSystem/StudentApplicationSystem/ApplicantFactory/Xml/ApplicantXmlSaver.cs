@@ -1,17 +1,16 @@
 ﻿using StudentApplicationSystem.ApplicantFactory.Interfaces;
-using StudentApplicationSystem.Models;
 using System.Xml.Serialization;
 
 namespace StudentApplicationSystem.ApplicantFactory.Xml
 {
     internal class ApplicantXmlSaver : IApplicantFileSaver
     {
-        public void Save(List<Applicant> applicants, string fileName)
+        public void Save<T>(List<T> entities, string fileName)
         {
-            var serializer = new XmlSerializer(typeof(List<Applicant>));
+            var serializer = new XmlSerializer(typeof(List<T>));
             using (var writer = new StreamWriter($"{fileName}.xml"))
             {
-                serializer.Serialize(writer, applicants);
+                serializer.Serialize(writer, entities);
             }
         }
     }

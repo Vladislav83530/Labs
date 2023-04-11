@@ -38,7 +38,7 @@ namespace StudentApplicationSystem.DataValidator
             DateTime minDateOfBirth = new DateTime(1900, 1, 1);
             DateTime maxDateOfBirth = DateTime.UtcNow;
 
-            if (birthDate > minDateOfBirth || birthDate < maxDateOfBirth)
+            if (birthDate > minDateOfBirth && birthDate < maxDateOfBirth)
                 return true;
             else
                 return false;
